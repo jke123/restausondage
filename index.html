@@ -1,0 +1,1025 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#b91c1c">
+  <meta name="description" content="Une enquête destinée aux restaurateurs pour comprendre leurs méthodes actuelles, leurs besoins et les possibilités d’optimisation.">
+  <title>Enquête auprès des restaurateurs — Méthodes, besoins et optimisations</title>
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- EmailJS -->
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+  <style>
+    :root {
+      color-scheme: light;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system,
+        BlinkMacSystemFont, "Segoe UI", sans-serif;
+      padding-top: 76px;
+    }
+
+    .question-card {
+      transition: border-color .2s ease, box-shadow .2s ease;
+    }
+
+    .question-card:focus-within {
+      border-color: #b91c1c;
+      box-shadow: 0 0 0 3px rgb(185 28 28 / 8%);
+    }
+
+    input[type="checkbox"],
+    input[type="radio"] {
+      accent-color: #b91c1c;
+    }
+
+    [hidden] {
+      display: none !important;
+    }
+
+    .progress-fill {
+      transition: width .25s ease;
+    }
+  </style>
+</head>
+
+<body class="bg-white text-neutral-900 antialiased">
+
+  <!-- Navigation -->
+  <header class="border-b border-neutral-200 bg-white">
+    <nav class="mx-auto flex max-w-5xl items-center justify-between px-5 py-5">
+      <a href="#" class="flex items-center gap-3" aria-label="Accueil — enquête auprès des restaurateurs">
+        <span class="flex h-10 w-10 items-center justify-center rounded-xl bg-red-700 text-white">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="h-5 w-5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/></svg>
+        </span>
+        <span>
+          <span class="block text-lg font-extrabold tracking-tight">Enquête auprès des restaurateurs</span>
+          <span class="block text-xs text-neutral-500">Méthodes, besoins et optimisations</span>
+        </span>
+      </a>
+      <span class="hidden rounded-full border border-neutral-200 px-3 py-1.5 text-xs font-medium text-neutral-600 sm:inline-block">
+        Questionnaire gratuit
+      </span>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section class="relative overflow-hidden bg-neutral-950 text-white">
+      <div class="absolute -right-20 -top-20 h-72 w-72 rounded-full bg-red-700/20 blur-3xl"></div>
+
+      <div class="relative mx-auto grid max-w-5xl gap-10 px-5 py-16 md:grid-cols-2 md:items-center md:py-24">
+        <div>
+          <p class="mb-5 inline-flex items-center gap-2 rounded-full border border-white/15 px-3 py-1.5 text-xs font-semibold uppercase tracking-wider text-red-300">
+            <span class="h-2 w-2 rounded-full bg-red-500"></span>
+            Enquête auprès des restaurateurs
+          </p>
+
+          <h1 class="max-w-xl text-4xl font-black leading-tight tracking-tight sm:text-5xl">
+            Et si votre restaurant pouvait <span class="text-red-500">aller plus loin&nbsp;?</span>
+          </h1>
+
+          <p class="mt-6 max-w-lg text-base leading-7 text-neutral-300">
+            Nous souhaitons comprendre comment vous gérez votre restaurant aujourd’hui, quels moyens vous utilisez et ce qui pourrait être simplifié, optimisé ou amélioré grâce à des solutions adaptées.
+          </p>
+
+          <div class="mt-8 flex flex-wrap gap-5 text-sm text-neutral-300">
+            <span class="flex items-center gap-2">
+              <span class="text-red-400">✓</span> Gratuit
+            </span>
+            <span class="flex items-center gap-2">
+              <span class="text-red-400">✓</span> Questions adaptées à vos réponses
+            </span>
+            <span class="flex items-center gap-2">
+              <span class="text-red-400">✓</span> Environ 8 à 12 minutes
+            </span>
+          </div>
+        </div>
+
+        <div class="hidden md:block">
+          <div class="rounded-3xl border border-white/10 bg-white/[0.04] p-7 shadow-2xl">
+            <div class="mb-7 flex items-center justify-between">
+              <div>
+                <p class="text-sm text-neutral-400">Votre activité</p>
+                <p class="mt-1 text-xl font-bold">Votre expérience compte.</p>
+              </div>
+              <span class="rounded-2xl bg-red-700 p-3 text-xl">✦</span>
+            </div>
+
+            <div class="space-y-4">
+              <div class="rounded-2xl border border-white/10 bg-white/[0.04] p-4">
+                <div class="flex items-center gap-3">
+                  <span class="flex h-10 w-10 items-center justify-center rounded-xl bg-white/10">01</span>
+                  <div>
+                    <p class="font-semibold">Parlons de votre restaurant</p>
+                    <p class="mt-1 text-sm text-neutral-400">Votre activité et votre organisation</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="rounded-2xl border border-white/10 bg-white/[0.04] p-4">
+                <div class="flex items-center gap-3">
+                  <span class="flex h-10 w-10 items-center justify-center rounded-xl bg-white/10">02</span>
+                  <div>
+                    <p class="font-semibold">Identifions vos difficultés</p>
+                    <p class="mt-1 text-sm text-neutral-400">Des questions adaptées à vos besoins</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="rounded-2xl border border-red-500/30 bg-red-700/10 p-4">
+                <div class="flex items-center gap-3">
+                  <span class="flex h-10 w-10 items-center justify-center rounded-xl bg-red-700">03</span>
+                  <div>
+                    <p class="font-semibold">Explorons les solutions possibles</p>
+                    <p class="mt-1 text-sm text-neutral-300">Des pistes adaptées à votre réalité</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Questionnaire -->
+    <section id="questionnaire" class="mx-auto max-w-3xl px-5 py-12 sm:py-16">
+      <div class="mb-8">
+        <p class="text-sm font-bold uppercase tracking-wider text-red-700">Votre questionnaire</p>
+        <h2 class="mt-2 text-2xl font-extrabold tracking-tight sm:text-3xl">
+          Faisons connaissance avec votre activité.
+        </h2>
+        <p class="mt-3 leading-7 text-neutral-600">
+          Décrivez vos méthodes actuelles, les outils utilisés et les améliorations qui vous seraient utiles. Certaines questions apparaîtront selon vos réponses.
+        </p>
+      </div>
+
+      <div class="fixed inset-x-0 top-0 z-50 border-b border-neutral-200 bg-white/95 shadow-sm backdrop-blur">
+        <div class="mx-auto max-w-3xl px-5 py-3">
+        <div class="flex items-center justify-between gap-3 text-sm">
+          <span class="font-semibold">Votre progression</span>
+          <span id="progress-text" class="text-neutral-500">0 %</span>
+        </div>
+        <div
+          class="h-2 overflow-hidden rounded-full bg-neutral-200"
+          role="progressbar"
+          aria-label="Progression du questionnaire"
+          aria-valuemin="0"
+          aria-valuemax="100"
+          aria-valuenow="0"
+          id="progress-bar"
+        >
+          <div id="progress-fill" class="progress-fill h-full w-0 rounded-full bg-red-700"></div>
+        </div>
+        <p class="mt-1 text-xs text-neutral-500">Votre progression reste visible pendant tout le questionnaire.</p>
+        </div>
+      </div>
+
+      <form id="survey-form" class="space-y-8" novalidate>
+        <!-- Section 1 -->
+        <section class="space-y-5">
+          <div>
+            <p class="text-xs font-bold uppercase tracking-widest text-red-700">01 — Votre établissement</p>
+            <h3 class="mt-1 text-xl font-bold">Parlez-nous de vous</h3>
+          </div>
+
+          <div class="question-card rounded-2xl border border-neutral-200 p-5">
+            <label for="restaurant_name" class="mb-2 block text-sm font-semibold">
+              Nom de votre restaurant <span class="text-red-700">*</span>
+            </label>
+            <input
+              id="restaurant_name"
+              name="restaurant_name"
+              type="text"
+              required
+              maxlength="120"
+              autocomplete="organization"
+              placeholder="Ex. : Le Délice"
+              class="w-full rounded-xl border border-neutral-300 bg-white px-4 py-3 outline-none focus:border-red-700"
+            >
+          </div>
+
+          <div class="question-card rounded-2xl border border-neutral-200 p-5">
+            <label for="city" class="mb-2 block text-sm font-semibold">
+              Ville ou commune <span class="text-red-700">*</span>
+            </label>
+            <input
+              id="city"
+              name="city"
+              type="text"
+              required
+              maxlength="100"
+              placeholder="Ex. : Cotonou, Abomey-Calavi…"
+              class="w-full rounded-xl border border-neutral-300 bg-white px-4 py-3 outline-none focus:border-red-700"
+            >
+          </div>
+
+          <fieldset class="question-card rounded-2xl border border-neutral-200 p-5">
+            <legend class="px-1 text-sm font-semibold">
+              Quel type d'établissement dirigez-vous ? <span class="text-red-700">*</span>
+            </legend>
+            <div class="mt-3 grid gap-3 sm:grid-cols-2">
+              <label class="flex cursor-pointer items-center gap-3 rounded-xl border border-neutral-200 p-3 hover:bg-neutral-50">
+                <input type="radio" name="restaurant_type" value="Restaurant classique" required>
+                <span class="text-sm">Restaurant classique</span>
+              </label>
+              <label class="flex cursor-pointer items-center gap-3 rounded-xl border border-neutral-200 p-3 hover:bg-neutral-50">
+                <input type="radio" name="restaurant_type" value="Fast-food">
+                <span class="text-sm">Fast-food</span>
+              </label>
+              <label class="flex cursor-pointer items-center gap-3 rounded-xl border border-neutral-200 p-3 hover:bg-neutral-50">
+                <input type="radio" name="restaurant_type" value="Maquis ou restaurant local">
+                <span class="text-sm">Maquis / restaurant local</span>
+              </label>
+              <label class="flex cursor-pointer items-center gap-3 rounded-xl border border-neutral-200 p-3 hover:bg-neutral-50">
+                <input type="radio" name="restaurant_type" value="Café ou salon de thé">
+                <span class="text-sm">Café / salon de thé</span>
+              </label>
+              <label class="flex cursor-pointer items-center gap-3 rounded-xl border border-neutral-200 p-3 hover:bg-neutral-50 sm:col-span-2">
+                <input type="radio" name="restaurant_type" value="Autre">
+                <span class="text-sm">Autre type d'établissement</span>
+              </label>
+            </div>
+          </fieldset>
+
+          <div class="question-card rounded-2xl border border-neutral-200 p-5">
+            <label for="restaurant_size" class="mb-2 block text-sm font-semibold">
+              Combien de personnes travaillent dans votre établissement ?
+            </label>
+            <select id="restaurant_size" name="restaurant_size" class="w-full rounded-xl border border-neutral-300 bg-white px-4 py-3 outline-none focus:border-red-700">
+              <option value="">Sélectionner une réponse</option>
+              <option>1 à 2 personnes</option>
+              <option>3 à 5 personnes</option>
+              <option>6 à 10 personnes</option>
+              <option>Plus de 10 personnes</option>
+            </select>
+          </div>
+        </section>
+
+        <!-- SECTION 2 : MÉTHODES ET MOYENS ACTUELS -->
+        <section class="space-y-5">
+          <div>
+            <p class="text-xs font-bold uppercase tracking-widest text-red-700">02 — Vos méthodes actuelles</p>
+            <h3 class="mt-1 text-xl font-bold">Comment votre restaurant fonctionne-t-il aujourd’hui ?</h3>
+            <p class="mt-2 text-sm leading-6 text-neutral-600">Nous cherchons à comprendre vos pratiques, même si vous ne rencontrez pas de difficulté particulière.</p>
+          </div>
+
+          <fieldset class="question-card rounded-2xl border border-neutral-200 p-5">
+            <legend class="px-1 text-sm font-semibold">Comment gérez-vous actuellement les activités suivantes ?</legend>
+            <p class="mt-1 text-xs text-neutral-500">Plusieurs réponses possibles.</p>
+            <div class="mt-3 grid gap-3 sm:grid-cols-2">
+              <label class="flex items-start gap-3 rounded-xl border border-neutral-200 p-3"><input type="checkbox" name="current_methods" value="Commandes et réservations"><span class="text-sm">Commandes et réservations</span></label>
+              <label class="flex items-start gap-3 rounded-xl border border-neutral-200 p-3"><input type="checkbox" name="current_methods" value="Ventes et caisse"><span class="text-sm">Ventes et caisse</span></label>
+              <label class="flex items-start gap-3 rounded-xl border border-neutral-200 p-3"><input type="checkbox" name="current_methods" value="Stocks et inventaires"><span class="text-sm">Stocks et inventaires</span></label>
+              <label class="flex items-start gap-3 rounded-xl border border-neutral-200 p-3"><input type="checkbox" name="current_methods" value="Achats et fournisseurs"><span class="text-sm">Achats et fournisseurs</span></label>
+              <label class="flex items-start gap-3 rounded-xl border border-neutral-200 p-3"><input type="checkbox" name="current_methods" value="Recettes, dépenses et bénéfices"><span class="text-sm">Recettes, dépenses et bénéfices</span></label>
+              <label class="flex items-start gap-3 rounded-xl border border-neutral-200 p-3"><input type="checkbox" name="current_methods" value="Clients et fidélisation"><span class="text-sm">Clients et fidélisation</span></label>
+              <label class="flex items-start gap-3 rounded-xl border border-neutral-200 p-3"><input type="checkbox" name="current_methods" value="Livraisons"><span class="text-sm">Livraisons</span></label>
+              <label class="flex items-start gap-3 rounded-xl border border-neutral-200 p-3"><input type="checkbox" name="current_methods" value="Personnel et planning"><span class="text-sm">Personnel et planning</span></label>
+              <label class="flex items-start gap-3 rounded-xl border border-neutral-200 p-3"><input type="checkbox" name="current_methods" value="Communication et publicité"><span class="text-sm">Communication et publicité</span></label>
+              <label class="flex items-start gap-3 rounded-xl border border-neutral-200 p-3"><input type="checkbox" name="current_methods" value="Hygiène et suivi des produits"><span class="text-sm">Hygiène et suivi des produits</span></label>
+            </div>
+          </fieldset>
+
+          <fieldset class="question-card rounded-2xl border border-neutral-200 p-5">
+            <legend class="px-1 text-sm font-semibold">Quels moyens utilisez-vous au quotidien ?</legend>
+            <p class="mt-1 text-xs text-neutral-500">Cochez tous les moyens utilisés, même en complément d’autres outils.</p>
+            <div class="mt-3 grid gap-3 sm:grid-cols-2">
+              <label class="flex items-start gap-3 rounded-xl border border-neutral-200 p-3"><input type="checkbox" name="current_tools" value="Mémoire ou habitudes"><span class="text-sm">Mémoire ou habitudes</span></label>
+              <label class="flex items-start gap-3 rounded-xl border border-neutral-200 p-3"><input type="checkbox" name="current_tools" value="Cahier ou registre papier"><span class="text-sm">Cahier ou registre papier</span></label>
+              <label class="flex items-start gap-3 rounded-xl border border-neutral-200 p-3"><input type="checkbox" name="current_tools" value="Calculatrice"><span class="text-sm">Calculatrice</span></label>
+              <label class="flex items-start gap-3 rounded-xl border border-neutral-200 p-3"><input type="checkbox" name="current_tools" value="Téléphone et appels"><span class="text-sm">Téléphone et appels</span></label>
+              <label class="flex items-start gap-3 rounded-xl border border-neutral-200 p-3"><input type="checkbox" name="current_tools" value="WhatsApp"><span class="text-sm">WhatsApp</span></label>
+              <label class="flex items-start gap-3 rounded-xl border border-neutral-200 p-3"><input type="checkbox" name="current_tools" value="Excel ou tableur"><span class="text-sm">Excel ou tableur</span></label>
+              <label class="flex items-start gap-3 rounded-xl border border-neutral-200 p-3"><input type="checkbox" name="current_tools" value="Application mobile"><span class="text-sm">Application mobile</span></label>
+              <label class="flex items-start gap-3 rounded-xl border border-neutral-200 p-3"><input type="checkbox" name="current_tools" value="Logiciel sur ordinateur"><span class="text-sm">Logiciel sur ordinateur</span></label>
+              <label class="flex items-start gap-3 rounded-xl border border-neutral-200 p-3"><input type="checkbox" name="current_tools" value="Personnel chargé du suivi"><span class="text-sm">Une personne chargée du suivi</span></label>
+              <label class="flex items-start gap-3 rounded-xl border border-neutral-200 p-3"><input type="checkbox" name="current_tools" value="Autre moyen"><span class="text-sm">Autre moyen</span></label>
+            </div>
+          </fieldset>
+
+          <div class="question-card rounded-2xl border border-neutral-200 p-5">
+            <label for="current_process_details" class="mb-2 block text-sm font-semibold">Pouvez-vous expliquer comment vous procédez actuellement pour une ou plusieurs de ces activités ?</label>
+            <textarea id="current_process_details" name="current_process_details" rows="4" maxlength="2000" placeholder="Ex. : les commandes sont notées dans un cahier, le stock est vérifié à la fin de la journée, les dépenses sont regroupées chaque semaine…" class="w-full rounded-xl border border-neutral-300 px-4 py-3 outline-none focus:border-red-700"></textarea>
+          </div>
+
+          <fieldset class="question-card rounded-2xl border border-neutral-200 p-5">
+            <legend class="px-1 text-sm font-semibold">Globalement, vos méthodes actuelles vous conviennent-elles ?</legend>
+            <div class="mt-3 space-y-3">
+              <label class="flex items-start gap-3 rounded-xl border border-neutral-200 p-3"><input type="radio" name="current_methods_satisfaction" value="Oui, elles me conviennent bien"><span class="text-sm">Oui, elles me conviennent bien.</span></label>
+              <label class="flex items-start gap-3 rounded-xl border border-neutral-200 p-3"><input type="radio" name="current_methods_satisfaction" value="Elles fonctionnent mais pourraient être améliorées"><span class="text-sm">Elles fonctionnent, mais pourraient être améliorées.</span></label>
+              <label class="flex items-start gap-3 rounded-xl border border-neutral-200 p-3"><input type="radio" name="current_methods_satisfaction" value="Elles me posent souvent des difficultés"><span class="text-sm">Elles me posent souvent des difficultés.</span></label>
+              <label class="flex items-start gap-3 rounded-xl border border-neutral-200 p-3"><input type="radio" name="current_methods_satisfaction" value="Je n’ai pas de méthode précise"><span class="text-sm">Je n’ai pas de méthode précise pour certaines activités.</span></label>
+            </div>
+          </fieldset>
+        </section>
+
+        <!-- Section 3 : difficultés -->
+        <section class="space-y-5">
+          <div>
+            <p class="text-xs font-bold uppercase tracking-widest text-red-700">03 — Vos difficultés et limites</p>
+            <h3 class="mt-1 text-xl font-bold">Qu’est-ce qui pourrait être amélioré ?</h3>
+            <p class="mt-2 text-sm leading-6 text-neutral-600">Sélectionnez les difficultés ou limites que vous rencontrez. Si tout se passe bien, vous pouvez tout de même indiquer les aspects que vous aimeriez optimiser.</p>
+          </div>
+
+          <fieldset class="question-card rounded-2xl border border-neutral-200 p-5">
+            <legend class="px-1 text-sm font-semibold">
+              Vos principales difficultés <span class="text-red-700">*</span>
+            </legend>
+            <div class="mt-3 grid gap-3 sm:grid-cols-2">
+              <label class="flex cursor-pointer items-start gap-3 rounded-xl border border-neutral-200 p-3 hover:bg-neutral-50">
+                <input class="challenge-option mt-1" type="checkbox" name="challenges" value="Suivi des commandes">
+                <span class="text-sm">Suivi des commandes</span>
+              </label>
+              <label class="flex cursor-pointer items-start gap-3 rounded-xl border border-neutral-200 p-3 hover:bg-neutral-50">
+                <input class="challenge-option mt-1" type="checkbox" name="challenges" value="Gestion du stock">
+                <span class="text-sm">Gestion du stock et des achats</span>
+              </label>
+              <label class="flex cursor-pointer items-start gap-3 rounded-xl border border-neutral-200 p-3 hover:bg-neutral-50">
+                <input class="challenge-option mt-1" type="checkbox" name="challenges" value="Suivi des recettes et dépenses">
+                <span class="text-sm">Suivi des recettes et dépenses</span>
+              </label>
+              <label class="flex cursor-pointer items-start gap-3 rounded-xl border border-neutral-200 p-3 hover:bg-neutral-50">
+                <input class="challenge-option mt-1" type="checkbox" name="challenges" value="Visibilité et publicité">
+                <span class="text-sm">Visibilité et publicité</span>
+              </label>
+              <label class="flex cursor-pointer items-start gap-3 rounded-xl border border-neutral-200 p-3 hover:bg-neutral-50">
+                <input class="challenge-option mt-1" type="checkbox" name="challenges" value="Fidélisation des clients">
+                <span class="text-sm">Fidélisation des clients</span>
+              </label>
+              <label class="flex cursor-pointer items-start gap-3 rounded-xl border border-neutral-200 p-3 hover:bg-neutral-50">
+                <input class="challenge-option mt-1" type="checkbox" name="challenges" value="Livraison">
+                <span class="text-sm">Gestion des livraisons</span>
+              </label>
+              <label class="flex cursor-pointer items-start gap-3 rounded-xl border border-neutral-200 p-3 hover:bg-neutral-50">
+                <input class="challenge-option mt-1" type="checkbox" name="challenges" value="Personnel et organisation">
+                <span class="text-sm">Personnel et organisation</span>
+              </label>
+              <label class="flex cursor-pointer items-start gap-3 rounded-xl border border-neutral-200 p-3 hover:bg-neutral-50">
+                <input class="challenge-option mt-1" type="checkbox" name="challenges" value="Autre difficulté">
+                <span class="text-sm">Autre difficulté</span>
+              </label>
+              <label class="flex cursor-pointer items-start gap-3 rounded-xl border border-neutral-200 p-3 hover:bg-neutral-50 sm:col-span-2">
+                <input class="challenge-option mt-1" type="checkbox" name="challenges" value="Aucune difficulté particulière" id="no-challenge-option">
+                <span class="text-sm">Je ne rencontre pas de difficulté particulière, mais je souhaite découvrir des possibilités d’optimisation.</span>
+              </label>
+            </div>
+            <p id="challenge-error" class="mt-3 hidden text-sm text-red-700" role="alert">
+              Sélectionnez au moins une difficulté.
+            </p>
+          </fieldset>
+
+          <div class="question-card rounded-2xl border border-neutral-200 p-5">
+            <label for="biggest_problem" class="mb-2 block text-sm font-semibold">
+              Quelle est votre difficulté la plus urgente ?
+            </label>
+            <textarea id="biggest_problem" name="biggest_problem" rows="3" maxlength="1500" placeholder="Décrivez brièvement votre principale préoccupation…" class="w-full rounded-xl border border-neutral-300 px-4 py-3 outline-none focus:border-red-700"></textarea>
+          </div>
+        </section>
+
+
+        <!-- SECTION 3 : ÉQUIPEMENT NUMÉRIQUE -->
+        <section class="space-y-5">
+          <div>
+            <p class="text-xs font-bold uppercase tracking-widest text-red-700">04 — Vos outils numériques</p>
+            <h3 class="mt-1 text-xl font-bold">Comment travaillez-vous actuellement ?</h3>
+          </div>
+
+          <fieldset class="question-card rounded-2xl border border-neutral-200 p-5">
+            <legend class="px-1 text-sm font-semibold">
+              Utilisez-vous déjà des outils numériques pour gérer votre activité ?
+              <span class="text-red-700">*</span>
+            </legend>
+            <div class="mt-3 space-y-3">
+              <label class="flex items-center gap-3 rounded-xl border border-neutral-200 p-3">
+                <input type="radio" name="digital_level" value="Aucun outil numérique" required>
+                <span class="text-sm">Non, je gère tout manuellement.</span>
+              </label>
+              <label class="flex items-center gap-3 rounded-xl border border-neutral-200 p-3">
+                <input type="radio" name="digital_level" value="Quelques outils simples">
+                <span class="text-sm">J'utilise quelques outils simples (WhatsApp, Excel, etc.).</span>
+              </label>
+              <label class="flex items-center gap-3 rounded-xl border border-neutral-200 p-3">
+                <input type="radio" name="digital_level" value="Logiciel dédié">
+                <span class="text-sm">J'utilise déjà un logiciel dédié.</span>
+              </label>
+            </div>
+          </fieldset>
+
+          <fieldset id="digital-tools-section" hidden disabled class="question-card rounded-2xl border border-neutral-200 p-5">
+            <legend class="px-1 text-sm font-semibold">Quels outils utilisez-vous déjà ?</legend>
+            <div class="mt-3 grid gap-3 sm:grid-cols-2">
+              <label class="flex items-center gap-3 rounded-xl border border-neutral-200 p-3">
+                <input type="checkbox" name="digital_tools" value="WhatsApp Business">
+                <span class="text-sm">WhatsApp Business</span>
+              </label>
+              <label class="flex items-center gap-3 rounded-xl border border-neutral-200 p-3">
+                <input type="checkbox" name="digital_tools" value="Réseaux sociaux">
+                <span class="text-sm">Réseaux sociaux</span>
+              </label>
+              <label class="flex items-center gap-3 rounded-xl border border-neutral-200 p-3">
+                <input type="checkbox" name="digital_tools" value="Excel ou tableur">
+                <span class="text-sm">Excel ou tableur</span>
+              </label>
+              <label class="flex items-center gap-3 rounded-xl border border-neutral-200 p-3">
+                <input type="checkbox" name="digital_tools" value="Logiciel de caisse">
+                <span class="text-sm">Logiciel de caisse</span>
+              </label>
+              <label class="flex items-center gap-3 rounded-xl border border-neutral-200 p-3">
+                <input type="checkbox" name="digital_tools" value="Site internet">
+                <span class="text-sm">Site internet</span>
+              </label>
+              <label class="flex items-center gap-3 rounded-xl border border-neutral-200 p-3">
+                <input type="checkbox" name="digital_tools" value="Autre outil">
+                <span class="text-sm">Autre outil</span>
+              </label>
+            </div>
+          </fieldset>
+
+          <fieldset id="delivery-section" hidden disabled class="question-card rounded-2xl border border-neutral-200 p-5">
+            <legend class="px-1 text-sm font-semibold">Comment gérez-vous les livraisons ?</legend>
+            <div class="mt-3 space-y-3">
+              <label class="flex items-center gap-3 rounded-xl border border-neutral-200 p-3">
+                <input type="radio" name="delivery_method" value="Appels téléphoniques">
+                <span class="text-sm">Appels téléphoniques</span>
+              </label>
+              <label class="flex items-center gap-3 rounded-xl border border-neutral-200 p-3">
+                <input type="radio" name="delivery_method" value="WhatsApp">
+                <span class="text-sm">WhatsApp</span>
+              </label>
+              <label class="flex items-center gap-3 rounded-xl border border-neutral-200 p-3">
+                <input type="radio" name="delivery_method" value="Livreur ou service externe">
+                <span class="text-sm">Livreur ou service externe</span>
+              </label>
+              <label class="flex items-center gap-3 rounded-xl border border-neutral-200 p-3">
+                <input type="radio" name="delivery_method" value="Pas de livraison">
+                <span class="text-sm">Je ne propose pas de livraison</span>
+              </label>
+            </div>
+          </fieldset>
+        </section>
+
+        <!-- SECTION 4 : SOLUTIONS ET BUDGET -->
+        <section class="space-y-5">
+          <div>
+            <p class="text-xs font-bold uppercase tracking-widest text-red-700">05 — Les solutions</p>
+            <h3 class="mt-1 text-xl font-bold">Qu'est-ce qui pourrait vous aider ?</h3>
+          </div>
+
+          <fieldset class="question-card rounded-2xl border border-neutral-200 p-5">
+            <legend class="px-1 text-sm font-semibold">
+              Quelle solution vous intéresserait le plus ?
+              <span class="text-red-700">*</span>
+            </legend>
+            <div class="mt-3 space-y-3">
+              <label class="flex items-start gap-3 rounded-xl border border-neutral-200 p-3">
+                <input type="radio" name="solution_interest" value="Site internet et présence en ligne" required>
+                <span class="text-sm">Site internet et présence en ligne</span>
+              </label>
+              <label class="flex items-start gap-3 rounded-xl border border-neutral-200 p-3">
+                <input type="radio" name="solution_interest" value="Commandes et livraisons">
+                <span class="text-sm">Commandes et livraisons</span>
+              </label>
+              <label class="flex items-start gap-3 rounded-xl border border-neutral-200 p-3">
+                <input type="radio" name="solution_interest" value="Gestion et suivi de l'activité">
+                <span class="text-sm">Gestion du stock, des ventes et des dépenses</span>
+              </label>
+              <label class="flex items-start gap-3 rounded-xl border border-neutral-200 p-3">
+                <input type="radio" name="solution_interest" value="Communication et fidélisation">
+                <span class="text-sm">Communication et fidélisation des clients</span>
+              </label>
+              <label class="flex items-start gap-3 rounded-xl border border-neutral-200 p-3">
+                <input type="radio" name="solution_interest" value="Conseils avant de choisir">
+                <span class="text-sm">Je souhaite être conseillé avant de choisir.</span>
+              </label>
+            </div>
+          </fieldset>
+
+          <fieldset class="question-card rounded-2xl border border-neutral-200 p-5">
+            <legend class="px-1 text-sm font-semibold">
+              Seriez-vous prêt à payer pour une solution qui répond réellement à vos besoins ?
+              <span class="text-red-700">*</span>
+            </legend>
+            <div class="mt-3 space-y-3">
+              <label class="flex items-center gap-3 rounded-xl border border-neutral-200 p-3">
+                <input type="radio" name="willingness_to_pay" value="Oui" required>
+                <span class="text-sm">Oui, si le prix est raisonnable.</span>
+              </label>
+              <label class="flex items-center gap-3 rounded-xl border border-neutral-200 p-3">
+                <input type="radio" name="willingness_to_pay" value="Cela dépend">
+                <span class="text-sm">Cela dépendra de la solution et de ses avantages.</span>
+              </label>
+              <label class="flex items-center gap-3 rounded-xl border border-neutral-200 p-3">
+                <input type="radio" name="willingness_to_pay" value="Non">
+                <span class="text-sm">Non, je privilégie les solutions gratuites.</span>
+              </label>
+            </div>
+          </fieldset>
+
+          <fieldset id="budget-section" hidden disabled class="question-card rounded-2xl border border-neutral-200 p-5">
+            <legend class="px-1 text-sm font-semibold">Quel rythme de paiement vous conviendrait le mieux ?</legend>
+            <p class="mt-1 text-xs leading-5 text-neutral-500">Choisissez d’abord la périodicité. Les montants proposés s’adapteront ensuite à votre choix.</p>
+            <div class="mt-3 space-y-3">
+              <label class="flex items-center gap-3 rounded-xl border border-neutral-200 p-3"><input type="radio" name="payment_period" value="Hebdomadaire"><span class="text-sm">Chaque semaine</span></label>
+              <label class="flex items-center gap-3 rounded-xl border border-neutral-200 p-3"><input type="radio" name="payment_period" value="Mensuelle"><span class="text-sm">Chaque mois</span></label>
+              <label class="flex items-center gap-3 rounded-xl border border-neutral-200 p-3"><input type="radio" name="payment_period" value="Trimestrielle"><span class="text-sm">Tous les 3 mois</span></label>
+              <label class="flex items-center gap-3 rounded-xl border border-neutral-200 p-3"><input type="radio" name="payment_period" value="Semestrielle"><span class="text-sm">Tous les 6 mois</span></label>
+              <label class="flex items-center gap-3 rounded-xl border border-neutral-200 p-3"><input type="radio" name="payment_period" value="Annuelle"><span class="text-sm">Chaque année</span></label>
+              <label class="flex items-center gap-3 rounded-xl border border-neutral-200 p-3"><input type="radio" name="payment_period" value="Autre périodicité"><span class="text-sm">Autre rythme</span></label>
+            </div>
+            <div id="other-period-wrap" hidden class="mt-4">
+              <label for="other_payment_period" class="mb-2 block text-sm font-semibold">Précisez le rythme souhaité</label>
+              <input id="other_payment_period" name="other_payment_period" type="text" maxlength="100" placeholder="Ex. : tous les deux mois" class="w-full rounded-xl border border-neutral-300 px-4 py-3 outline-none focus:border-red-700">
+            </div>
+            <div id="budget-amount-wrap" hidden class="mt-5 border-t border-neutral-200 pt-5">
+              <p class="text-sm font-semibold">Quel montant seriez-vous prêt à payer à ce rythme ?</p>
+              <p class="mt-1 text-xs text-neutral-500">Choisissez une fourchette indicative.</p>
+              <div id="budget-amount-options" class="mt-3 space-y-3"></div>
+              <div id="other-amount-wrap" hidden class="mt-4">
+                <label for="other_payment_amount" class="mb-2 block text-sm font-semibold">Précisez le montant et la devise</label>
+                <input id="other_payment_amount" name="other_payment_amount" type="text" maxlength="100" placeholder="Ex. : 750 FCFA par mois" class="w-full rounded-xl border border-neutral-300 px-4 py-3 outline-none focus:border-red-700">
+              </div>
+            </div>
+          </fieldset>
+
+          <div class="question-card rounded-2xl border border-neutral-200 p-5">
+            <label for="other_needs" class="mb-2 block text-sm font-semibold">Y a-t-il une amélioration ou une idée que vous aimeriez partager ?</label>
+            <textarea id="other_needs" name="other_needs" rows="3" maxlength="1500" placeholder="Une méthode à améliorer, un besoin particulier, une suggestion…" class="w-full rounded-xl border border-neutral-300 px-4 py-3 outline-none focus:border-red-700"></textarea>
+          </div>
+        </section>
+
+
+        <!-- QUESTION OUVERTE FINALE -->
+        <section class="space-y-5">
+          <div>
+            <p class="text-xs font-bold uppercase tracking-widest text-red-700">Question finale</p>
+            <h3 class="mt-1 text-xl font-bold">Imaginez la solution idéale pour votre restaurant</h3>
+            <p class="mt-2 text-sm leading-6 text-neutral-600">Cette question est libre : vous pouvez proposer des fonctions qui n’ont pas été évoquées plus haut.</p>
+          </div>
+          <div class="question-card rounded-2xl border border-neutral-200 p-5">
+            <label for="ideal_solution_features" class="mb-2 block text-sm font-semibold">Si vous pouviez demander la création d’une application mobile, d’un logiciel informatique ou d’une plateforme web pour votre restaurant, quelles fonctions souhaiteriez-vous qu’elle propose ?</label>
+            <textarea id="ideal_solution_features" name="ideal_solution_features" rows="5" maxlength="3000" placeholder="Que souhaiteriez-vous pouvoir faire, automatiser, suivre ou améliorer grâce à cette solution ? Décrivez librement vos idées…" class="w-full rounded-xl border border-neutral-300 px-4 py-3 outline-none focus:border-red-700"></textarea>
+          </div>
+        </section>
+
+        <!-- SECTION 6 : CONTACT -->
+        <section class="space-y-5">
+          <div>
+            <p class="text-xs font-bold uppercase tracking-widest text-red-700">06 — Pour aller plus loin</p>
+            <h3 class="mt-1 text-xl font-bold">Souhaitez-vous être recontacté ?</h3>
+            <p class="mt-2 text-sm text-neutral-600">Ces informations sont facultatives.</p>
+          </div>
+
+          <div class="question-card rounded-2xl border border-neutral-200 p-5">
+            <label for="contact_name" class="mb-2 block text-sm font-semibold">Votre nom</label>
+            <input id="contact_name" name="contact_name" type="text" maxlength="120"
+              autocomplete="name" placeholder="Votre nom"
+              class="w-full rounded-xl border border-neutral-300 px-4 py-3 outline-none focus:border-red-700">
+          </div>
+
+          <div class="question-card rounded-2xl border border-neutral-200 p-5">
+            <label for="contact_phone" class="mb-2 block text-sm font-semibold">Téléphone / WhatsApp</label>
+            <input id="contact_phone" name="contact_phone" type="tel" maxlength="40"
+              autocomplete="tel" placeholder="Ex. : +229 01 XX XX XX XX"
+              class="w-full rounded-xl border border-neutral-300 px-4 py-3 outline-none focus:border-red-700">
+          </div>
+
+          <div class="question-card rounded-2xl border border-neutral-200 p-5">
+            <label for="contact_email" class="mb-2 block text-sm font-semibold">Adresse e-mail</label>
+            <input id="contact_email" name="contact_email" type="email" maxlength="254"
+              autocomplete="email" placeholder="vous@exemple.com"
+              class="w-full rounded-xl border border-neutral-300 px-4 py-3 outline-none focus:border-red-700">
+          </div>
+        </section>
+
+        <!-- Champ anti-spam -->
+        <div class="absolute left-[-9999px]" aria-hidden="true">
+          <label for="website">Ne pas remplir</label>
+          <input id="website" name="website" type="text" tabindex="-1" autocomplete="off">
+        </div>
+
+        <div id="form-error" hidden class="rounded-xl border border-red-200 bg-red-50 p-4 text-sm text-red-800" role="alert"></div>
+
+        <!-- ENVOI -->
+        <div class="rounded-2xl bg-neutral-950 p-6 text-white sm:p-8">
+          <h3 class="text-xl font-bold">Merci de contribuer à cette démarche.</h3>
+          <p class="mt-2 text-sm leading-6 text-neutral-300">
+            Vos réponses nous aideront à mieux comprendre les réalités des restaurateurs.
+          </p>
+          <button id="submit-button" type="submit"
+            class="mt-6 flex w-full items-center justify-center gap-2 rounded-xl bg-red-700 px-5 py-4 font-bold text-white hover:bg-red-600 disabled:cursor-not-allowed disabled:opacity-60 sm:w-auto">
+            <span id="submit-label">Envoyer mes réponses</span>
+            <span aria-hidden="true">→</span>
+          </button>
+          <p class="mt-4 text-xs leading-5 text-neutral-400">
+            Vos réponses seront envoyées par e-mail au responsable du questionnaire.
+          </p>
+        </div>
+      </form>
+
+      <!-- CONFIRMATION -->
+      <section id="success-panel" hidden class="py-16 text-center" aria-live="polite">
+        <div class="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-green-100 text-3xl text-green-700">✓</div>
+        <h2 class="mt-6 text-2xl font-extrabold">Merci pour votre participation !</h2>
+        <p class="mx-auto mt-3 max-w-md leading-7 text-neutral-600">
+          Vos réponses ont bien été envoyées. Merci de contribuer à cette démarche.
+        </p>
+      </section>
+    </section>
+  </main>
+
+  <!-- PIED DE PAGE -->
+  <footer class="border-t border-neutral-200 bg-neutral-50">
+    <div class="mx-auto flex max-w-5xl flex-col gap-3 px-5 py-7 text-sm text-neutral-500 sm:flex-row sm:items-center sm:justify-between">
+      <p>© <span id="year"></span> Enquête auprès des restaurateurs</p>
+      <p>Comprendre les besoins des restaurateurs.</p>
+    </div>
+  </footer>
+
+  <!-- JAVASCRIPT : EMAILJS ET QUESTIONS CONDITIONNELLES -->
+<script>
+  /* =========================================================
+     1. CONFIGURATION EMAILJS
+     ========================================================= */
+  const EMAILJS_PUBLIC_KEY  = "nHADaauZDjOsf2iZ_";
+  const EMAILJS_SERVICE_ID  = "service_ddldquq";
+  const EMAILJS_TEMPLATE_ID = "template_poja0h4";
+
+  const emailjsConfigured =
+    !!EMAILJS_PUBLIC_KEY &&
+    !!EMAILJS_SERVICE_ID &&
+    !!EMAILJS_TEMPLATE_ID &&
+    !EMAILJS_PUBLIC_KEY.startsWith("VOTRE_");
+
+  /* =========================================================
+     2. RÉFÉRENCES DOM
+     ========================================================= */
+  const form              = document.getElementById("survey-form");
+  const submitButton      = document.getElementById("submit-button");
+  const submitLabel       = document.getElementById("submit-label");
+  const formError         = document.getElementById("form-error");
+  const successPanel      = document.getElementById("success-panel");
+  const progressFill      = document.getElementById("progress-fill");
+  const progressText      = document.getElementById("progress-text");
+  const progressBar       = document.getElementById("progress-bar");
+  const progressContainer = progressBar.closest(".fixed");
+  const challengeError    = document.getElementById("challenge-error");
+
+  document.getElementById("year").textContent = new Date().getFullYear();
+
+  if (emailjsConfigured && window.emailjs) {
+    emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
+  }
+
+  /* =========================================================
+     3. UTILITAIRES ERREUR / DIFFICULTÉS
+     ========================================================= */
+  function showChallengeError() {
+    challengeError.classList.remove("hidden");
+    challengeError.scrollIntoView({ behavior: "smooth", block: "center" });
+  }
+
+  function hideChallengeError() {
+    challengeError.classList.add("hidden");
+  }
+
+  function showError(message) {
+    formError.textContent = message;
+    formError.hidden = false;
+    formError.scrollIntoView({ behavior: "smooth", block: "center" });
+  }
+
+  /* =========================================================
+     4. SECTIONS CONDITIONNELLES
+     ========================================================= */
+  function setSectionActive(id, active) {
+    const section = document.getElementById(id);
+    section.hidden = !active;
+    section.disabled = !active;
+
+    if (!active) {
+      section.querySelectorAll("input, select, textarea").forEach((field) => {
+        if (field.type === "checkbox" || field.type === "radio") {
+          field.checked = false;
+        } else {
+          field.value = "";
+        }
+      });
+    }
+  }
+
+  const amountRanges = {
+    "Hebdomadaire":      ["Moins de 500 FCFA par semaine", "500 à 999 FCFA par semaine", "1 000 à 1 499 FCFA par semaine", "1 500 à 2 499 FCFA par semaine", "2 500 FCFA ou plus par semaine"],
+    "Mensuelle":         ["Moins de 500 FCFA par mois", "500 à 999 FCFA par mois", "1 000 à 1 999 FCFA par mois", "2 000 à 4 999 FCFA par mois", "5 000 à 9 999 FCFA par mois", "10 000 FCFA ou plus par mois"],
+    "Trimestrielle":     ["Moins de 1 500 FCFA par trimestre", "1 500 à 2 999 FCFA par trimestre", "3 000 à 5 999 FCFA par trimestre", "6 000 à 11 999 FCFA par trimestre", "12 000 FCFA ou plus par trimestre"],
+    "Semestrielle":      ["Moins de 3 000 FCFA par semestre", "3 000 à 5 999 FCFA par semestre", "6 000 à 11 999 FCFA par semestre", "12 000 à 23 999 FCFA par semestre", "24 000 FCFA ou plus par semestre"],
+    "Annuelle":          ["Moins de 6 000 FCFA par an", "6 000 à 11 999 FCFA par an", "12 000 à 23 999 FCFA par an", "24 000 à 59 999 FCFA par an", "60 000 FCFA ou plus par an"],
+    "Autre périodicité": ["Moins de 500 FCFA par période", "500 à 999 FCFA par période", "1 000 à 2 499 FCFA par période", "2 500 à 4 999 FCFA par période", "5 000 FCFA ou plus par période"]
+  };
+
+  function updateBudgetAmounts() {
+    const budgetSection = document.getElementById("budget-section");
+    if (budgetSection.hidden) return;
+
+    const selectedPeriod    = form.querySelector('input[name="payment_period"]:checked')?.value || "";
+    const amountWrap        = document.getElementById("budget-amount-wrap");
+    const options           = document.getElementById("budget-amount-options");
+    const otherPeriodWrap   = document.getElementById("other-period-wrap");
+    const otherAmountWrap   = document.getElementById("other-amount-wrap");
+    const otherPeriodInput  = document.getElementById("other_payment_period");
+    const otherAmountInput  = document.getElementById("other_payment_amount");
+
+    const isOtherPeriod = selectedPeriod === "Autre périodicité";
+    otherPeriodWrap.hidden = !isOtherPeriod;
+    otherPeriodInput.required = isOtherPeriod;
+    if (!isOtherPeriod) otherPeriodInput.value = ""; 
+
+    amountWrap.hidden = !selectedPeriod;
+
+    if (!selectedPeriod) {
+      options.innerHTML = "";
+      delete options.dataset.period;
+      otherAmountWrap.hidden = true;
+      otherAmountInput.required = false;
+      otherAmountInput.value = "";
+      return;
+    }
+
+    if (options.dataset.period !== selectedPeriod) {
+      options.innerHTML = "";
+      options.dataset.period = selectedPeriod;
+
+      const previous = form.querySelector('input[name="payment_amount"]:checked')?.value || "";
+      const amounts = [
+        ...(amountRanges[selectedPeriod] || amountRanges["Autre périodicité"]),
+        "Je ne souhaite finalement pas payer",
+        "Autre montant"
+      ];
+
+      amounts.forEach((amount, index) => {
+        const label = document.createElement("label");
+        label.className = "flex items-start gap-3 rounded-xl border border-neutral-200 p-3 hover:bg-neutral-50";
+
+        const radio = document.createElement("input");
+        radio.type = "radio";
+        radio.name = "payment_amount";
+        radio.value = amount;
+        radio.required = index === 0; 
+        if (amount === previous) radio.checked = true;
+
+        const span = document.createElement("span");
+        span.className = "text-sm";
+        span.textContent = amount;
+
+        label.append(radio, span);
+        options.appendChild(label);
+      });
+    }
+
+    const otherChosen = form.querySelector('input[name="payment_amount"]:checked')?.value === "Autre montant";
+    otherAmountWrap.hidden = !otherChosen;
+    otherAmountInput.required = otherChosen;
+    if (!otherChosen) otherAmountInput.value = "";
+  }
+
+  function updateConditionalQuestions() {
+    const digitalLevel = form.querySelector('input[name="digital_level"]:checked')?.value || "";
+    const hasDeliveryDifficulty = Array.from(
+      form.querySelectorAll('input[name="challenges"]:checked')
+    ).some((input) => input.value === "Livraison");
+    const willingness = form.querySelector('input[name="willingness_to_pay"]:checked')?.value || "";
+
+    setSectionActive(
+      "digital-tools-section",
+      digitalLevel === "Quelques outils simples" || digitalLevel === "Logiciel dédié"
+    );
+    setSectionActive("delivery-section", hasDeliveryDifficulty);
+    setSectionActive("budget-section", willingness === "Oui" || willingness === "Cela dépend");
+
+    updateBudgetAmounts();
+    updateProgress();
+  }
+
+  /* =========================================================
+     5. BARRE DE PROGRESSION DYNAMIQUE
+     ========================================================= */
+  function updateProgress() {
+    const checks = [
+      () => document.getElementById("restaurant_name").value.trim() !== "",
+      () => document.getElementById("city").value.trim() !== "",
+      () => !!form.querySelector('input[name="restaurant_type"]:checked'),
+      () => form.querySelectorAll('input[name="challenges"]:checked').length > 0,
+      () => !!form.querySelector('input[name="digital_level"]:checked'),
+      () => !!form.querySelector('input[name="solution_interest"]:checked'),
+      () => !!form.querySelector('input[name="willingness_to_pay"]:checked')
+    ];
+
+    if (!document.getElementById("budget-section").hidden) {
+      checks.push(() => !!form.querySelector('input[name="payment_period"]:checked'));
+
+      if (!document.getElementById("other-period-wrap").hidden) {
+        checks.push(() => document.getElementById("other_payment_period").value.trim() !== "");
+      }
+      if (!document.getElementById("budget-amount-wrap").hidden) {
+        checks.push(() => !!form.querySelector('input[name="payment_amount"]:checked'));
+
+        if (!document.getElementById("other-amount-wrap").hidden) {
+          checks.push(() => document.getElementById("other_payment_amount").value.trim() !== "");
+        }
+      }
+    }
+
+    const total     = checks.length;
+    const completed = checks.filter((fn) => fn()).length;
+    const percentage = total ? Math.round((completed / total) * 100) : 0;
+
+    progressFill.style.width = percentage + "%";
+    progressText.textContent = percentage + " %";
+    progressBar.setAttribute("aria-valuenow", String(percentage));
+    progressBar.setAttribute("aria-valuetext", `${completed} sur ${total} champs complétés`);
+  }
+
+  /* =========================================================
+     6. ÉVÉNEMENTS FORMULAIRE
+     ========================================================= */
+  form.addEventListener("change", (event) => {
+    if (event.target.matches('input[name="challenges"]')) {
+      const noneOption   = document.getElementById("no-challenge-option");
+      const otherOptions = Array.from(form.querySelectorAll('input[name="challenges"]'))
+        .filter((i) => i !== noneOption);
+
+      if (event.target === noneOption && noneOption.checked) {
+        otherOptions.forEach((i) => { i.checked = false; });
+      } else if (event.target !== noneOption && event.target.checked) {
+        noneOption.checked = false;
+      }
+
+      if (form.querySelectorAll('input[name="challenges"]:checked').length > 0) {
+        hideChallengeError();
+      }
+    }
+
+    updateConditionalQuestions();
+  });
+
+  let rafProgress = null;
+  form.addEventListener("input", () => {
+    if (rafProgress) cancelAnimationFrame(rafProgress);
+    rafProgress = requestAnimationFrame(() => {
+      rafProgress = null;
+      updateProgress();
+    });
+  });
+
+  /* =========================================================
+     7. COLLECTE ET MISE EN FORME HTML DE L'E-MAIL
+     ========================================================= */
+  function getSurveyAnswers() {
+    const answers = {};
+    const data = new FormData(form);
+
+    for (const [key, value] of data.entries()) {
+      if (key === "website") continue; // honeypot
+      if (Object.prototype.hasOwnProperty.call(answers, key)) {
+        if (!Array.isArray(answers[key])) answers[key] = [answers[key]];
+        answers[key].push(value);
+      } else {
+        answers[key] = value;
+      }
+    }
+    return answers;
+  }
+
+  function buildEmailHtml(answers) {
+    const fieldsToSkip = [
+      'restaurant_name', 'city', 'submitted_at', 
+      'contact_name', 'contact_phone', 'contact_email', 'website'
+    ];
+
+    const labels = {
+      restaurant_type: "Type d'établissement",
+      restaurant_size: "Taille de l'équipe",
+      current_methods: "Méthodes actuelles",
+      current_process_details: "Détails des méthodes",
+      challenges: "Difficultés rencontrées",
+      biggest_problem: "Problème le plus urgent",
+      digital_level: "Niveau numérique",
+      digital_tools: "Outils numériques utilisés",
+      delivery_method: "Gestion des livraisons",
+      solution_interest: "Solution intéressée",
+      willingness_to_pay: "Prêt à payer",
+      payment_period: "Périodicité de paiement",
+      other_payment_period: "Autre périodicité",
+      payment_amount: "Budget (montant)",
+      other_payment_amount: "Autre montant",
+      other_needs: "Suggestions / Besoins",
+      ideal_solution_features: "Solution idéale"
+    };
+
+    let html = `<table role="presentation" style="width: 100%; border-collapse: collapse; font-size: 14px;">`;
+
+    for (const [key, value] of Object.entries(answers)) {
+      if (fieldsToSkip.includes(key) || !labels[key]) continue;
+
+      let displayValue = Array.isArray(value) ? value.join(', ') : value;
+      
+      if (!displayValue) {
+        displayValue = "<span style='color: #999; font-style: italic;'>(Non renseigné)</span>";
+      } else {
+        displayValue = String(displayValue)
+          .replace(/</g, "&lt;")
+          .replace(/>/g, "&gt;")
+          .replace(/\n/g, "<br>");
+      }
+
+      html += `
+        <tr>
+          <td style="padding: 9px 0; border-bottom: 1px solid #e5e5e5; width: 42%; color: #525252; font-weight: bold; vertical-align: top;">
+            ${labels[key]}
+          </td>
+          <td style="padding: 9px 0; border-bottom: 1px solid #e5e5e5; overflow-wrap: anywhere;">
+            ${displayValue}
+          </td>
+        </tr>
+      `;
+    }
+
+    html += `</table>`;
+    return html;
+  }
+
+  /* =========================================================
+     8. VALIDATION ET ENVOI
+     ========================================================= */
+  form.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    formError.hidden = true;
+    hideChallengeError();
+
+    if (document.getElementById("website").value.trim()) return;
+
+    if (form.querySelectorAll('input[name="challenges"]:checked').length === 0) {
+      showChallengeError();
+      return;
+    }
+
+    if (!form.reportValidity()) return;
+
+    if (!emailjsConfigured || !window.emailjs) {
+      showError("Configuration EmailJS manquante. Vérifiez vos identifiants.");
+      return;
+    }
+
+    const answers = getSurveyAnswers();
+    const submittedAt = new Date().toLocaleString("fr-FR", {
+      dateStyle: "short",
+      timeStyle: "short"
+    });
+
+    const emailHtmlContent = buildEmailHtml(answers);
+
+    submitButton.disabled = true;
+    submitLabel.textContent = "Envoi en cours…";
+
+    try {
+      await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
+        restaurant_name: answers.restaurant_name || "",
+        city:            answers.city || "",
+        contact_name:    answers.contact_name || "",
+        contact_phone:   answers.contact_phone || "",
+        contact_email:   answers.contact_email || "",
+        submitted_at:    submittedAt,
+        message_html:    emailHtmlContent
+      });
+
+      form.hidden = true;
+      progressContainer.hidden = true;
+      successPanel.hidden = false;
+      successPanel.scrollIntoView({ behavior: "smooth", block: "start" });
+    } catch (error) {
+      console.error("Erreur EmailJS :", error);
+      showError("L'envoi a échoué. Vérifiez votre connexion internet et réessayez.");
+    } finally {
+      submitButton.disabled = false;
+      submitLabel.textContent = "Envoyer mes réponses";
+    }
+  });
+
+  /* =========================================================
+     9. INITIALISATION
+     ========================================================= */
+  updateConditionalQuestions();
+  updateProgress();
+</script>
+</body>
+</html>
